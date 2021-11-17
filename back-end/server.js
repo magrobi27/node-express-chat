@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3006');
 
 app.set('port', port);
 

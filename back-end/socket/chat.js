@@ -1,3 +1,5 @@
+const sChat = require('../models/chat')
+
 module.exports = function (io) {
 
   io.on('connection', (socket) => {
@@ -13,5 +15,26 @@ module.exports = function (io) {
     socket.on('...', (msg) => {
 
     });
+
+    socket.on('plus-one-chat', (msg,id ) => {
+      // Création de l'objet "click" de Mongoose (schéma)
+      const chat = new sChat({
+        userId: id,
+        username: "nothing",
+        sessionId: socket.id,
+        text: msg,
+        dateChat: Date.now(),
+      });
+  
+      // Sauvegarde dans la base de données
+      chat.save().then(() => {
+      }).catch((error) => {
+          console.log(error)
+      })
+      
+  });
   })
+
+
+  
 }
