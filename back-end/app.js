@@ -43,6 +43,8 @@ module.exports = function(app, server) {
     res.status(200).json({ hello: "world" });
   });
 
+
+//gestion des users
   app.post("/user", (req, res, next)=>{
 
     const user = new sChat

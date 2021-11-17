@@ -16,14 +16,14 @@ module.exports = function (io) {
 
     });
 
-    socket.on('plus-one-chat', (msg,id ) => {
+    socket.on('plus-one-chat', (msg,today,id ) => {
       // Création de l'objet "click" de Mongoose (schéma)
       const chat = new sChat({
         userId: id,
         username: "nothing",
         sessionId: socket.id,
         text: msg,
-        dateChat: Date.now(),
+        dateChat: today,
       });
   
       // Sauvegarde dans la base de données
